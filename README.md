@@ -1,7 +1,7 @@
 # Ember.ai
 
 <p align="center">
-  <img src="assets/readme/hero.png" alt="Ember.ai: someone on a rooftop at night releases a glowing lantern into a sky full of lanterns. Release what you feel. Someone will answer." width="100%" />
+  <img src="assets/readme/hero.png" alt="ember: someone on a rooftop at night releases a glowing lantern into a sky full of lanterns over a sleeping city" width="100%" />
 </p>
 
 <p align="center">
