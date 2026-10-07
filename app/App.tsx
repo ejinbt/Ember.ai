@@ -944,7 +944,8 @@ export default function App() {
   }, [tutorialStep, tutorialReplies]);
 
   const activeThoughts = useMemo(() => {
-    const timeFiltered = thoughts.filter(t => (Date.now() - t.timestamp.getTime()) < 24 * 60 * 60 * 1000);
+    // Lanterns fade after 24 h; the example lanterns stay (they are always in the sky).
+    const timeFiltered = thoughts.filter(t => t.isExample || (Date.now() - t.timestamp.getTime()) < 24 * 60 * 60 * 1000);
     if (tutorialThought) {
       return [tutorialThought];
     }

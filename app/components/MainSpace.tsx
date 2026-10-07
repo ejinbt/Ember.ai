@@ -197,7 +197,8 @@ const ThoughtCard = React.memo(function ThoughtCard({
   isNew = false,
 }: ThoughtCardProps) {
   const ageInHours = (new Date().getTime() - new Date(thought.timestamp).getTime()) / (1000 * 60 * 60);
-  const targetOpacity = ageInHours > 20 ? Math.max(0.2, 1 - (ageInHours - 20) / 4) : 1;
+  // Fades over the last 4 of its 24 hours; example lanterns never fade.
+  const targetOpacity = !thought.isExample && ageInHours > 20 ? Math.max(0.2, 1 - (ageInHours - 20) / 4) : 1;
 
   const charSum = thought.id.split('').reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
   const duration = 4.5 + (charSum % 3);

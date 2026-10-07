@@ -71,7 +71,10 @@ function blocked(c: Context, reason: string, severity: "mild" | "moderate" | "se
   return c.json({ blocked: true, reason, severity }, 422);
 }
 
-const tooFast = (c: Context) => fail(c, 429, "rate_limited", "Take a breath, try again in a minute.");
+const tooFast = (c: Context, which: "minute" | "day" = "minute") =>
+  which === "day"
+    ? fail(c, 429, "rate_limited", "You've released a lot today. Rest a little, and come back tomorrow.")
+    : fail(c, 429, "rate_limited", "Take a breath, try again in a minute.");
 
 async function readJson(c: Context): Promise<Record<string, unknown> | null> {
   try {
@@ -243,7 +246,8 @@ async function loadThoughts(_demo: boolean): Promise<string> {
 
 // Create a thought
 app.post("/thoughts", async (c) => {
-  if (await isRateLimited(c.req.raw, "thought")) return tooFast(c);
+  const limited = await isRateLimited(c.req.raw, "thought");
+  if (limited) return tooFast(c, limited);
   const body = await readJson(c);
   if (!body) return fail(c, 400, "bad_request", "That didn't come through right. Try again?");
 
@@ -366,7 +370,8 @@ app.post(
   async (c) => {
     const thoughtId = c.req.param("id");
     if (!UUID_RE.test(thoughtId)) return fail(c, 404, "not_found", "That thought is no longer here.");
-    if (await isRateLimited(c.req.raw, "reply")) return tooFast(c);
+    const limited = await isRateLimited(c.req.raw, "reply");
+    if (limited) return tooFast(c, limited);
     const body = await readJson(c);
     if (!body) return fail(c, 400, "bad_request", "That didn't come through right. Try again?");
 
@@ -507,7 +512,8 @@ app.delete("/thoughts/:id/replies/:replyId", async (c) => {
 
 // Optional live pre-check while typing. The final decision is always on POST.
 app.post("/moderate", async (c) => {
-  if (await isRateLimited(c.req.raw, "moderate")) return tooFast(c);
+  const limited = await isRateLimited(c.req.raw, "moderate");
+  if (limited) return tooFast(c, limited);
   const body = await readJson(c);
   const text = typeof body?.text === "string" ? body.text.trim() : "";
   if (!text) return c.json({ allowed: true, severity: "clean", reason: "", isCrisis: false });
@@ -521,7 +527,8 @@ app.post("/thoughts/:id/replies/:replyId/thanks", async (c) => {
   const thoughtId = c.req.param("id");
   const replyId = c.req.param("replyId");
   if (!UUID_RE.test(thoughtId) || !UUID_RE.test(replyId)) return fail(c, 404, "not_found", "That reply is already gone.");
-  if (await isRateLimited(c.req.raw, "reply")) return tooFast(c);
+  const limited = await isRateLimited(c.req.raw, "reply");
+  if (limited) return tooFast(c, limited);
   const { data: reply } = await supabase
     .from("replies")
     .select("id, is_ai, thanked_at")
@@ -662,7 +669,8 @@ app.post("/demo", async (c) => {
 
 // Admin: exchange the passcode for a short-lived token (sent as X-Admin-Token on deletes)
 app.post("/verify-admin", async (c) => {
-  if (await isRateLimited(c.req.raw, "admin")) return tooFast(c);
+  const limited = await isRateLimited(c.req.raw, "admin");
+  if (limited) return tooFast(c, limited);
   const body = await readJson(c);
   if (!verifyAdminPasscode(body?.passcode)) {
     return c.json({ success: false, error: { code: "forbidden", message: "Incorrect passcode." } }, 401);

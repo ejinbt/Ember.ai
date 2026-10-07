@@ -107,7 +107,9 @@ export const api = {
     }
 
     if (res.status === 429) {
-      throw new Error('Take a breath, try again in a minute.');
+      // The server says which limit it was (a minute, or the day's).
+      const body429 = await res.json().catch(() => ({}));
+      throw new Error(body429?.error?.message || 'Take a breath, try again in a minute.');
     }
 
     if (!res.ok) {
@@ -165,7 +167,9 @@ export const api = {
     }
 
     if (res.status === 429) {
-      throw new Error('Take a breath, try again in a minute.');
+      // The server says which limit it was (a minute, or the day's).
+      const body429 = await res.json().catch(() => ({}));
+      throw new Error(body429?.error?.message || 'Take a breath, try again in a minute.');
     }
 
     if (res.status === 413) {

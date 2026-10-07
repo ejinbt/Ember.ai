@@ -5,7 +5,8 @@ import { sha256Hex } from "./security.ts";
 export type RateKind = "thought" | "reply" | "moderate" | "admin" | "tts";
 
 const LIMITS: Record<Exclude<RateKind, "tts">, { perMinute: number; perDay?: number }> = {
-  thought: { perMinute: 5, perDay: 30 },
+  // 200 a day per address: a venue or campus can share one IP (30 ran out during a day of testing).
+  thought: { perMinute: 5, perDay: 200 },
   reply: { perMinute: 20 },
   moderate: { perMinute: 60 },
   admin: { perMinute: 5, perDay: 30 },
@@ -38,10 +39,10 @@ async function countSince(hash: string, kind: string, sinceMs: number): Promise<
 }
 
 /**
- * Records the event and returns true if the caller is over the limit.
+ * Records the event; returns which limit the caller is over ("minute" or "day"), or false.
  * Fails open on database errors (availability over strictness), but logs them.
  */
-export async function isRateLimited(req: Request, kind: Exclude<RateKind, "tts">): Promise<boolean> {
+export async function isRateLimited(req: Request, kind: Exclude<RateKind, "tts">): Promise<false | "minute" | "day"> {
   try {
     const hash = await ipHash(clientIp(req));
     const limit = LIMITS[kind];
@@ -49,7 +50,8 @@ export async function isRateLimited(req: Request, kind: Exclude<RateKind, "tts">
       countSince(hash, kind, MINUTE),
       limit.perDay ? countSince(hash, kind, DAY) : Promise.resolve(0),
     ]);
-    if (minute >= limit.perMinute || (limit.perDay && day >= limit.perDay)) return true;
+    if (limit.perDay && day >= limit.perDay) return "day";
+    if (minute >= limit.perMinute) return "minute";
     await supabase.from("rate_events").insert({ ip_hash: hash, kind });
     if (Math.random() < 0.02) void cleanupOldEvents();
     return false;
