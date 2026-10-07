@@ -532,7 +532,7 @@ app.post("/thoughts/:id/replies/:replyId/thanks", async (c) => {
   if (!(await isOwner(c.req.header("X-Owner-Token"), thoughtId, "thought"))) {
     return fail(c, 403, "forbidden", "Only the person who released this lantern can thank its replies.");
   }
-  if (reply.is_ai) return fail(c, 400, "bad_request", "Ember doesn't need thanks, but it's glad you're here.");
+  if (reply.is_ai) return fail(c, 400, "bad_request", "ember.ai doesn't need thanks, but it's glad you're here.");
   if (!reply.thanked_at) {
     const { error } = await supabase.from("replies").update({ thanked_at: new Date().toISOString() }).eq("id", replyId);
     if (error) throw new Error(error.message);

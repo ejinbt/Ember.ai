@@ -37,7 +37,7 @@ export function HistoryModal({ thoughts, userId, onClose, onThoughtClick }: Prop
         {/* Header */}
         <div className="flex items-center justify-between px-6 pt-5 pb-4">
           <h2 className="text-[#f9f3eb] text-[20px] font-bold tracking-wide" style={{ fontFamily: "'Agreya', serif" }}>
-            Ember Registry
+            ember.ai Registry
           </h2>
           <button
             onClick={onClose}

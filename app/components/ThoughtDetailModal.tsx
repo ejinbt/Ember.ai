@@ -1092,7 +1092,7 @@ async function exportQuoteCard(thought: Thought) {
 
       const shownReplyLines = replyLines.slice(0, 3);
       for (let j = 0; j < shownReplyLines.length; j++) {
-        const lineText = (j === 0 ? '✦ Ember: ' : '') + shownReplyLines[j] + (j === 2 && replyLines.length > 3 ? '...' : '');
+        const lineText = (j === 0 ? '✦ ember.ai: ' : '') + shownReplyLines[j] + (j === 2 && replyLines.length > 3 ? '...' : '');
         ctx.fillText(lineText, size * 0.5, replyY + 22 + (j * 28));
       }
     }
@@ -1480,7 +1480,7 @@ export function ThoughtDetailModal({ thought, allThoughts, onClose, onAddRespons
                 className="bg-[rgba(20,15,25,0.98)] backdrop-blur-xl border border-[rgba(214,106,62,0.4)] rounded-[20px] px-5 py-4 text-center shadow-[0_12px_40px_rgba(0,0,0,0.6),_0_0_20px_rgba(214,106,62,0.15)] relative"
               >
                 <p className="text-[#f9f3eb] text-[13.5px] font-medium leading-relaxed" style={{ fontFamily: "'Alegreya Sans', sans-serif" }}>
-                  Ember is about quiet support. Tap a sticker to send it and complete the tour!
+                  ember.ai is about quiet support. Tap a sticker to send it and complete the tour!
                 </p>
                 <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-[rgba(20,15,25,0.98)] border-r border-b border-[rgba(214,106,62,0.4)]" />
               </motion.div>

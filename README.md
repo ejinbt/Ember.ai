@@ -1,4 +1,4 @@
-# Ember.ai
+# ember.ai
 
 <p align="center">
   <img src="assets/readme/hero.png" alt="ember: someone on a rooftop at night releases a glowing lantern into a sky full of lanterns over a sleeping city" width="100%" />
@@ -20,13 +20,13 @@
 <p align="center">
   <a href="https://ember-ai-beta.vercel.app"><img src="https://img.shields.io/badge/%E2%9C%A6%20TRY%20IT-ember--ai--beta.vercel.app-D66A3E?style=for-the-badge" alt="Try it" /></a>
   <a href="#"><img src="https://img.shields.io/badge/%E2%96%B6%20WATCH-demo%20video-1a1a1a?style=for-the-badge" alt="Watch the demo video" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/DEVPOST-Ember.ai-003E54?style=for-the-badge&logo=devpost&logoColor=white" alt="Devpost" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/DEVPOST-ember.ai-003E54?style=for-the-badge&logo=devpost&logoColor=white" alt="Devpost" /></a>
 </p>
 
 Built for **ForgeHacks Online 2026**, track **AI + Creativity**:
 *"Build an AI-powered experience that introduces a new way for people to create, collaborate, express ideas, or experience art and media."*
 
-> Ember is a place to be heard, not a replacement for professional care.
+> ember.ai is a place to be heard, not a replacement for professional care.
 > If you're in danger right now, call your local helpline: **India 14416 (Tele-MANAS) · US 988 · UK 116 123 (Samaritans)**.
 
 ---
@@ -41,16 +41,16 @@ Social media asks you to perform: profiles, likes, followers. We wanted the oppo
 
 1. **Release a feeling.** Write a few honest words and optionally tag a feeling (lonely, anxious, grieving, hopeful, joyful, grateful).
 2. **It becomes a lantern.** AI turns the words into a unique lantern: its colours, glow, flicker, shape and its own ambient soundscape (rain, wind, chimes, piano…). The sky becomes a shared, living artwork.
-3. **Constellations.** Lanterns with the same feeling are joined by glowing threads, so you can see you're not alone. Right after you release, Ember tells you how many others felt the same tonight.
+3. **Constellations.** Lanterns with the same feeling are joined by glowing threads, so you can see you're not alone. Right after you release, ember.ai tells you how many others felt the same tonight.
 4. **Others answer.** Anyone can reply with a note, a voice note, a drawing or a sticker. You get a notification when someone answers, and you can send the replier a thank-you heart.
-5. **Ember answers if no one does.** After a short wait, Ember (the AI) replies with a warm, short message and reads it aloud in a calm voice. Every AI reply is clearly labelled **✦ Ember (AI)**.
+5. **ember.ai answers if no one does.** After a short wait, ember.ai (the AI) replies with a warm, short message and reads it aloud in a calm voice. Every AI reply is clearly labelled **✦ ember.ai (AI)**.
 6. **It fades.** Lanterns fade after 24 hours. Say it, let it go.
 
-## How Ember answers the AI + Creativity prompt
+## How ember.ai answers the AI + Creativity prompt
 
 > *"Build an AI-powered experience that introduces a new way for people to **create**, **collaborate**, **express ideas**, or **experience art and media**."*
 
-| The prompt | In Ember |
+| The prompt | In ember.ai |
 |---|---|
 | **AI-powered experience** | AI is the medium, not a chatbot bolted on: it turns each feeling into a lantern, reads the feeling behind untagged words, moderates every reply, and answers in a warm spoken voice when no one else has. |
 | **A new way to create** | You don't draw or compose: you just say how you feel, and AI turns it into a one-of-a-kind piece of light and sound (colours, glow, flicker, shape and its own ambient soundscape). |
@@ -61,7 +61,7 @@ Social media asks you to perform: profiles, likes, followers. We wanted the oppo
 ## Safety, built in
 
 - **Moderation on the server for everything:** text (rules + AI), voice notes (transcribed and checked), and drawings (image check). Hate and harassment are blocked with a gentle message; pain is always welcome.
-- **Crisis care:** messages that sound like a crisis are never blocked or silenced. The writer immediately sees a warning card with the right helpline for their country, a guided breathing exercise and a list of international helplines, and Ember's calming reply arrives right away.
+- **Crisis care:** messages that sound like a crisis are never blocked or silenced. The writer immediately sees a warning card with the right helpline for their country, a guided breathing exercise and a list of international helplines, and ember.ai's calming reply arrives right away.
 - **Anonymous by design:** no accounts, no profiles, no likes. Ownership (to delete your own lantern or get notified) is proven with a private token stored only in your browser.
 - **Rate limits** on releasing, replying and AI usage; an admin can remove any message.
 
@@ -71,9 +71,9 @@ Social media asks you to perform: profiles, likes, followers. We wanted the oppo
 |---|---|
 | Frontend | React + Vite + TypeScript, Tailwind, Framer Motion, Tone.js; a pannable/zoomable canvas with SVG lanterns and constellation threads |
 | Backend | Supabase: Postgres (row-level security, the browser is read-only), Realtime, Storage, and one Deno/Hono **Edge Function** that owns every write |
-| AI: text | [Featherless](https://featherless.ai) (Qwen 2.5 32B Instruct) for lantern design, moderation and Ember's replies, with Google **Gemini** as backup |
+| AI: text | [Featherless](https://featherless.ai) (Qwen 2.5 32B Instruct) for lantern design, moderation and ember.ai's replies, with Google **Gemini** as backup |
 | AI: voice & images | **Gemini** transcribes and checks voice notes and checks drawings |
-| AI: speech | **ElevenLabs** gives Ember its voice |
+| AI: speech | **ElevenLabs** gives ember.ai its voice |
 | Hosting | Vercel (frontend), Supabase (backend) |
 
 **Architecture in short:**
@@ -84,7 +84,7 @@ Browser ──reads──▶ Postgres (get_feed RPC, read-only, RLS) ──Realt
    └──writes──▶ Edge Function (Deno + Hono)
                   ├─ moderation: rules + Featherless/Gemini (text), Gemini (voice, drawings)
                   ├─ lantern design: AI → colours, glow, shape, sound, inferred feeling
-                  ├─ Ember reply: AI text → ElevenLabs voice → Storage
+                  ├─ ember.ai reply: AI text → ElevenLabs voice → Storage
                   ├─ crisis detection → helpline for the writer's country
                   └─ notifications, thank-you hearts, rate limits, admin
 ```
@@ -99,7 +99,7 @@ Highlights:
 - **Safety without silencing.** A message like *"I don't think I can do this anymore"* must never be blocked, but must get help instantly. We combined rules and AI so crisis messages always reach the person with a helpline and a calm reply.
 - **Latency.** Two AI checks in a row made posting feel stuck. We added clear loading states, cached moderation verdicts, and parallel uploads.
 - **Anonymous ownership.** Without accounts we still needed "delete my lantern", notifications and thank-you hearts that only the real author can use: solved with hashed owner tokens.
-- **Making AI feel humane.** Prompts that keep Ember short, warm and never preachy, always labelled as AI.
+- **Making AI feel humane.** Prompts that keep ember.ai short, warm and never preachy, always labelled as AI.
 
 ## Accomplishments we're proud of
 
@@ -143,9 +143,9 @@ Set the function's secrets with `npx supabase secrets set NAME=value` (see [.env
 
 | Secret | Purpose |
 |---|---|
-| `FEATHERLESS_API_KEY` | text AI (moderation, lanterns, Ember's replies) |
+| `FEATHERLESS_API_KEY` | text AI (moderation, lanterns, ember.ai's replies) |
 | `GEMINI_API_KEY` | backup text AI; voice and drawing checks |
-| `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID` | Ember's voice |
+| `ELEVENLABS_API_KEY`, `ELEVENLABS_VOICE_ID` | ember.ai's voice |
 | `ADMIN_PASSCODE` | admin mode (double-click the logo) |
 | `ALLOWED_ORIGINS` | frontend URLs allowed to write (e.g. your Vercel URL) |
 | `DEMO_MODE` | `false` disables simulated people (use `false` in production) |
@@ -154,7 +154,7 @@ Set the function's secrets with `npx supabase secrets set NAME=value` (see [.env
 
 ```
 app/                     React frontend (App.tsx, components/, api.ts)
-supabase/functions/server/   Edge Function: API, moderation, lanterns, Ember replies
+supabase/functions/server/   Edge Function: API, moderation, lanterns, ember.ai replies
 supabase/migrations/     Database schema, feed function, example lanterns
 fixtures/                Example lanterns (also seeded into the database)
 assets/                  Images and the ambient music

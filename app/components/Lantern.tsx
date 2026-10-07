@@ -510,7 +510,7 @@ export function Lantern({
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               className="mt-1 flex items-center gap-1 text-[11px] text-[#FFB347] font-serif italic"
             >
-              <span>✦ Ember is writing…</span>
+              <span>✦ ember.ai is writing…</span>
             </motion.div>
           )}
         </AnimatePresence>

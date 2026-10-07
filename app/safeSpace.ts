@@ -86,18 +86,18 @@ const COMPASSIONATE_MESSAGES: Record<Severity, string[]> = {
   clean: [],
   mild: [
     "This space is built on kindness. Could you soften this a little?",
-    "Ember is a sanctuary — let's keep the energy warm and gentle.",
+    "ember.ai is a sanctuary — let's keep the energy warm and gentle.",
     "Your feelings are valid, but let's express them without harsh words.",
   ],
   moderate: [
     "This ember carries energy that might hurt someone. Let's try again with warmth.",
     "Everyone here is carrying something heavy. Let's choose words that heal, not hurt.",
-    "Ember is a place for honest feelings, not harsh ones. Try expressing what's underneath the anger.",
+    "ember.ai is a place for honest feelings, not harsh ones. Try expressing what's underneath the anger.",
   ],
   severe: [
-    "This content can't be released into the sky. Ember is a safe space for everyone.",
+    "This content can't be released into the sky. ember.ai is a safe space for everyone.",
     "Words that harm aren't welcome here. But what you're feeling underneath? That matters. Try again.",
-    "Ember protects every soul in this space. This message can't be sent, but your real feelings can.",
+    "ember.ai protects every soul in this space. This message can't be sent, but your real feelings can.",
   ],
 };
 

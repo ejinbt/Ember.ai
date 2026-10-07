@@ -313,7 +313,7 @@ export default function App() {
           // The author of a lantern you replied to sent your reply a thank-you heart.
           title = '✦ Your words helped someone';
         } else if (newest.isAI) {
-          title = '✦ Ember answered';
+          title = '✦ ember.ai answered';
         } else if (newest.type === 'note') {
           title = 'Someone answered your lantern';
         } else if (newest.type === 'voice') {
@@ -991,7 +991,7 @@ export default function App() {
           >
             <img 
               src="https://i.imgur.com/5nagvWz.png" 
-              alt="Ember Logo" 
+              alt="ember.ai logo" 
               className="h-20 w-auto object-contain"
             />
           </motion.div>

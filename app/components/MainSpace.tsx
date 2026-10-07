@@ -968,7 +968,7 @@ export function MainSpace({ thoughts, selectedThoughtId, onInputClick, onThought
       >
         <img
           src="https://i.imgur.com/5nagvWz.png"
-          alt="Ember Logo"
+          alt="ember.ai logo"
           onDoubleClick={handleLogoDoubleClick}
           className="h-14 sm:h-20 w-auto object-contain relative z-10 drop-shadow-[0_0_20px_rgba(214,106,62,0.25)] cursor-pointer"
         />
@@ -1063,7 +1063,7 @@ export function MainSpace({ thoughts, selectedThoughtId, onInputClick, onThought
             className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[#a89992] hover:text-[#f9f3eb] hover:bg-[rgba(255,255,255,0.1)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D66A3E] flex-shrink-0 cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="About Ember"
+            aria-label="About ember.ai"
           >
             <Info size={16} />
           </motion.button>
@@ -1266,11 +1266,11 @@ export function MainSpace({ thoughts, selectedThoughtId, onInputClick, onThought
               </div>
 
               <h3 className="text-[#f9f3eb] text-[22px] font-bold tracking-wide mb-3" style={{ fontFamily: "'Alegreya', serif" }}>
-                About Ember
+                About ember.ai
               </h3>
 
               <p className="text-[#e2d9d1] text-[15px] leading-relaxed mb-6 opacity-90" style={{ fontFamily: "'Alegreya Sans', sans-serif" }}>
-                Ember is an anonymous emotional sanctuary for those moments when feelings are hard to put into words. It provides a peaceful night sky where you can release your thoughts as glowing lanterns, connect with others through voice, drawing, or stickers, and know that you are never screaming into a silent void.
+                ember.ai is an anonymous emotional sanctuary for those moments when feelings are hard to put into words. It provides a peaceful night sky where you can release your thoughts as glowing lanterns, connect with others through voice, drawing, or stickers, and know that you are never screaming into a silent void.
               </p>
 
               <div className="w-full h-[1px] bg-white/10 mb-5" />

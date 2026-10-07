@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const slides = [
   {
-    title: "Welcome to Ember.",
+    title: "Welcome to ember.ai",
     description: "When was the last time someone asked how you were doing and you actually told the truth?",
     showLogo: true,
   },
@@ -14,7 +14,7 @@ const slides = [
   },
   {
     title: "The Sanctuary.",
-    description: "Ember is a sky full of strangers who'll never know your name, but will always hold your moment. No profiles. No likes. Just warmth.",
+    description: "ember.ai is a sky full of strangers who'll never know your name, but will always hold your moment. No profiles. No likes. Just warmth.",
     showLogo: true,
   }
 ];
@@ -94,7 +94,7 @@ export function Onboarding({ onComplete }: { onComplete: () => void }) {
                 <div className="absolute inset-0 bg-[#D66A3E]/20 rounded-full blur-3xl animate-pulse" />
                 <img 
                   src="https://i.imgur.com/5nagvWz.png" 
-                  alt="Ember Logo" 
+                  alt="ember.ai logo" 
                   className="h-28 sm:h-44 w-auto object-contain relative z-10 drop-shadow-[0_0_25px_rgba(214,106,62,0.45)]"
                 />
               </motion.div>
@@ -152,7 +152,7 @@ export function Onboarding({ onComplete }: { onComplete: () => void }) {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#D66A3E]/0 via-[#D66A3E]/10 to-[#D66A3E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
           <span className="relative z-10 text-white font-medium tracking-wide text-sm sm:text-base whitespace-nowrap">
-            {currentSlide === slides.length - 1 ? "Enter Ember" : "Continue"}
+            {currentSlide === slides.length - 1 ? "Enter ember.ai" : "Continue"}
           </span>
         </button>
       </motion.div>
