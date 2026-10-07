@@ -46,7 +46,19 @@ Social media asks you to perform: profiles, likes, followers. We wanted the oppo
 5. **Ember answers if no one does.** After a short wait, Ember (the AI) replies with a warm, short message and reads it aloud in a calm voice. Every AI reply is clearly labelled **✦ Ember (AI)**.
 6. **It fades.** Lanterns fade after 24 hours. Say it, let it go.
 
-### Safety, built in
+## How Ember answers the AI + Creativity prompt
+
+> *"Build an AI-powered experience that introduces a new way for people to **create**, **collaborate**, **express ideas**, or **experience art and media**."*
+
+| The prompt | In Ember |
+|---|---|
+| **AI-powered experience** | AI is the medium, not a chatbot bolted on: it turns each feeling into a lantern, reads the feeling behind untagged words, moderates every reply, and answers in a warm spoken voice when no one else has. |
+| **A new way to create** | You don't draw or compose: you just say how you feel, and AI turns it into a one-of-a-kind piece of light and sound (colours, glow, flicker, shape and its own ambient soundscape). |
+| **Collaborate** | Strangers build one shared artwork together: the night sky. Feelings join into glowing constellations, and people answer each other with notes, voice notes, drawings and stickers. |
+| **Express ideas** | Anonymous, no profiles or likes, so people can express what they never say out loud, in whatever form fits: words, voice or a drawing. |
+| **Experience art and media** | The sky is a living audiovisual space: you explore it, hear each lantern's soundscape and watch it change as feelings arrive and fade after 24 hours. |
+
+## Safety, built in
 
 - **Moderation on the server for everything:** text (rules + AI), voice notes (transcribed and checked), and drawings (image check). Hate and harassment are blocked with a gentle message; pain is always welcome.
 - **Crisis care:** messages that sound like a crisis are never blocked or silenced. The writer immediately sees a warning card with the right helpline for their country, a guided breathing exercise and a list of international helplines, and Ember's calming reply arrives right away.
