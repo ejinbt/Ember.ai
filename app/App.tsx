@@ -738,6 +738,13 @@ export default function App() {
         setThoughts(prev => [...prev.filter(t => t.id !== created.id), created]);
         setActiveView('space');
 
+        // Fly to the new lantern and let it glow for a moment: in a full sky it was hard to find.
+        setPanToTarget({ x: created.x, y: created.y });
+        setAiGlowThoughtId(created.id);
+        setTimeout(() => {
+          setAiGlowThoughtId(current => (current === created.id ? null : current));
+        }, 6000);
+
         const emo = emotion || res.thought.emotion;
         if (emo) {
           const sameFeelingCount = thoughtsRef.current.filter(t => !t.isExample && t.emotion === emo && t.id !== created.id).length;

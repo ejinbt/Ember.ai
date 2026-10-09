@@ -692,9 +692,10 @@ export function MainSpace({ thoughts, selectedThoughtId, onInputClick, onThought
       const dx = e.touches[0].clientX - e.touches[1].clientX;
       const dy = e.touches[0].clientY - e.touches[1].clientY;
       initialTouchDistRef.current = Math.hypot(dx, dy);
-      initialScaleRef.current = scale;
+      // scaleRef, not scale: depending on scale re-registered all the listeners on every zoom step.
+      initialScaleRef.current = scaleRef.current;
     }
-  }, [scale]);
+  }, []);
 
   const handleTouchMove = useCallback((e: TouchEvent) => {
     if (e.touches.length === 2 && initialTouchDistRef.current !== null) {
@@ -722,7 +723,11 @@ export function MainSpace({ thoughts, selectedThoughtId, onInputClick, onThought
     el.addEventListener('touchmove', handleTouchMove, { passive: false });
     el.addEventListener('touchend', handleTouchEnd, { passive: true });
     return () => {
+      // Clear the flag too: a cancelled frame left it set, and every later wheel event then
+      // waited for a frame that never came (wheel zoom stopped working until a reload).
       if (zoomRafRef.current) cancelAnimationFrame(zoomRafRef.current);
+      zoomRafRef.current = null;
+      pendingZoomRef.current = 0;
       el.removeEventListener('wheel', handleWheel);
       el.removeEventListener('touchstart', handleTouchStart);
       el.removeEventListener('touchmove', handleTouchMove);
